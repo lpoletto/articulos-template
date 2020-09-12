@@ -1,25 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  NavLink
+} from "react-router-dom";
+import Contacto from './components/Contacto';
+import Productos from './components/Productos';
+import Inicio from './components/Inicio';
+import DetalleItem from './components/DetalleItem';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="container mt-5">
+        {/* Navar */}
+        <div className="btn-group">
+
+          <NavLink exact to='/' className="btn btn-dark" activeClassName="active">
+            Home
+          </NavLink>
+          <NavLink exact to='/productos' className="btn btn-dark" activeClassName='active'>
+            Productos
+          </NavLink>
+          <NavLink exact to='/contacto' className="btn btn-dark" activeClassName='active'>
+            Contacto
+          </NavLink>
+
+        </div>
+        <hr/>
+        <Switch>
+          <Route path='/contacto'>
+            <Contacto/>
+          </Route>
+          <Route path="/productos/:id" exact>
+            <DetalleItem />
+          </Route>
+          <Route path='/productos'>
+            <Productos/>
+          </Route>
+          <Route path='/'>
+            <Inicio/>
+          </Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
