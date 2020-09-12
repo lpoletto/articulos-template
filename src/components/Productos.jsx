@@ -1,3 +1,7 @@
+/**
+ * Rodri, trata de hacer un Card que muestra la info del prodcuto,
+ * toma de ejemplo este. Te cree esta rama para que puedas probar tranquilo
+ */
 import React, {useEffect, useState} from 'react';
 import {
     Link
